@@ -5,9 +5,12 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.yandex.practicum.pages.BasePage;
 import ru.yandex.practicum.util.Config;
 
-public class BaseTest {
+import java.time.Duration;
+
+public abstract class BaseTest {
     private WebDriver driver;
 
     public WebDriver getDriver() {
@@ -17,7 +20,7 @@ public class BaseTest {
     @Before
     public void setUp() {
         initWebDriver();
-        driver.get(Config.SERVICE_URL);
+        new BasePage(driver).startWebApp();
     }
 
     private void initWebDriver() {
@@ -26,10 +29,11 @@ public class BaseTest {
         } else {
             driver = new ChromeDriver();
         }
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Config.TIMEOUT));
     }
 
     @After
     public void tearDown() {
-        driver.quit();
+        new BasePage(driver).closeDriverAndQuitBrowser();
     }
 }
