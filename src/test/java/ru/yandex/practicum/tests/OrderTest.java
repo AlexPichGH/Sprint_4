@@ -9,6 +9,7 @@ import ru.yandex.practicum.pages.order_pages.OrderAboutRentPage;
 import ru.yandex.practicum.pages.order_pages.OrderConfirmationPage;
 import ru.yandex.practicum.pages.order_pages.OrderPersonalDataPage;
 import ru.yandex.practicum.pages.order_pages.OrderSuccessfullyPlacedPage;
+import ru.yandex.practicum.tests_data.OrderTestData;
 
 @RunWith(Parameterized.class)
 public class OrderTest extends BaseTest {
@@ -39,12 +40,9 @@ public class OrderTest extends BaseTest {
     }
 
     // тестовые данные
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} {2} {3} {4} {5} {6} {7} {8}")
     public static Object[][] getOrderTestData() {
-        return new Object[][]{
-                {"Антонин", "Долохов", "Москва, Красная площадь, 9", 9, "+74956235527", "05.05.2025", 1, "black", null},
-                {"Пи", "Па", "Москва, ул. Маросейка, 2", 89, "+79032854004", "30.05.2025", 4, null, "Оставьте у входа"},
-        };
+        return OrderTestData.ORDER_TEST_DATA;
     }
 
     // проверка позитивного сценария размещения заказа
@@ -66,14 +64,14 @@ public class OrderTest extends BaseTest {
 
     // проверка позитивного сценария размещения заказа при нажатии на верхнюю кнопку "Заказать"
     @Test
-    public void checkOrderPlacedSuccessfullyFromTopOrderButton() {
+    public void checkOrderPlacedSuccessfullyFromTopOrderButtonTest() {
         new HomePage(getDriver()).clickOnTopOrderButton();
         checkOrderPlacedSuccessfully();
     }
 
     // проверка позитивного сценария размещения заказа при нажатии на нижнюю кнопку "Заказать"
     @Test
-    public void checkOrderPlacedSuccessfullyFromBottomOrderButton() {
+    public void checkOrderPlacedSuccessfullyFromBottomOrderButtonTest() {
         new HomePage(getDriver()).clickOnBottomOrderButton();
         checkOrderPlacedSuccessfully();
     }

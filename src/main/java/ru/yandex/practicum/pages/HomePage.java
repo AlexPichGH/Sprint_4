@@ -12,8 +12,6 @@ import java.time.Duration;
 
 public class HomePage extends BasePage {
 
-    // заголовок раздела FAQ
-    private final By faqSectionTitle = By.cssSelector(".Home_SubHeader__zwi_E");
     // все элементы выпадающего списка FAQ
     private final By faqDropdownItems = By.cssSelector(".accordion__button");
     // ответ из выпадающего списка FAQ
@@ -36,16 +34,19 @@ public class HomePage extends BasePage {
 
     // раскрыть элемент выпадающего списка FAQ
     public void expandFaqDropdownItem(int index) {
-        WebElement faqTitle = driver.findElement(faqSectionTitle);
-        scrollToElement(faqTitle);
-        driver.findElements(faqDropdownItems).get(index).click();
-        // ожидание появления элемента с ответом
-        new WebDriverWait(driver, Duration.ofSeconds(Config.TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(faqAnswerItems));
+        WebElement dropdown = driver.findElements(faqDropdownItems).get(index);
+        // ожидание появления элемента с вопросом
+        new WebDriverWait(driver, Duration.ofSeconds(Config.TIMEOUT)).until(ExpectedConditions.elementToBeClickable(dropdown));
+        dropdown.click();
     }
 
     // получить текст из элемента ответа выпадающего списка FAQ
     public String getFaqAnswerText(int index) {
-        return driver.findElements(faqAnswerItems).get(index).getText();
+        WebElement answer = driver.findElements(faqAnswerItems).get(index);
+        scrollToElement(answer);
+        // ожидание появления элемента с ответом
+        new WebDriverWait(driver, Duration.ofSeconds(Config.TIMEOUT)).until(ExpectedConditions.visibilityOf(answer));
+        return answer.getText();
     }
 
     // нажать на верхнюю кнопку "Заказать"
