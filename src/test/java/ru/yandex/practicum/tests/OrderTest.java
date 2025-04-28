@@ -5,11 +5,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.practicum.pages.HomePage;
-import ru.yandex.practicum.pages.order_pages.OrderAboutRentPage;
-import ru.yandex.practicum.pages.order_pages.OrderConfirmationPage;
-import ru.yandex.practicum.pages.order_pages.OrderPersonalDataPage;
-import ru.yandex.practicum.pages.order_pages.OrderSuccessfullyPlacedPage;
-import ru.yandex.practicum.tests_data.OrderTestData;
+import ru.yandex.practicum.pages.order.OrderAboutRentPage;
+import ru.yandex.practicum.pages.order.OrderConfirmationPage;
+import ru.yandex.practicum.pages.order.OrderPersonalDataPage;
+import ru.yandex.practicum.pages.order.OrderSuccessfullyPlacedPage;
+import ru.yandex.practicum.tests.data.OrderTestData;
 
 @RunWith(Parameterized.class)
 public class OrderTest extends BaseTest {

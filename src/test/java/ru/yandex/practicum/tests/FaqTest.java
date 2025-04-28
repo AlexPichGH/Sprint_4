@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.practicum.pages.HomePage;
-import ru.yandex.practicum.tests_data.FaqTestData;
+import ru.yandex.practicum.tests.data.FaqTestData;
 
 @RunWith(Parameterized.class)
 public class FaqTest extends BaseTest {

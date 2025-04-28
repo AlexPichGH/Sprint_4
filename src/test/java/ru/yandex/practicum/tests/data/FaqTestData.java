@@ -1,4 +1,4 @@
-package ru.yandex.practicum.tests_data;
+package ru.yandex.practicum.tests.data;
 
 public class FaqTestData {
     public static final Object[][] FAQ_TEST_DATA = new Object[][]{

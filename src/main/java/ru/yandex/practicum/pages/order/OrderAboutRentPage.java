@@ -1,4 +1,4 @@
-package ru.yandex.practicum.pages.order_pages;
+package ru.yandex.practicum.pages.order;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
